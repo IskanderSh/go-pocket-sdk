@@ -1,14 +1,12 @@
-package pocket
+package go_pocket_sdk
 
 import (
 	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-
-	//"errors"
 	"github.com/pkg/errors"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
