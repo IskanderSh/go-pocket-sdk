@@ -1,6 +1,11 @@
 # GetPocket API Golang SDK
 ## https://getpocket.com/developer/
 
+### imports
+```
+go get github.com/pkg/errors
+```
+
 ### Example usage:
 
 ```go
