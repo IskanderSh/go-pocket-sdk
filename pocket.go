@@ -21,7 +21,7 @@ const (
 	endpointRequestToken = "/oauth/request"
 	endpointAuthorize    = "/oauth/authorize"
 
-	// xErrorHeader used to parse error message from Headers on no-2XX responses
+	// xErrorHeader used to parse error message from Headers on non-2XX responses
 	xErrorHeader = "X-Error"
 
 	defaultTimeout = 5 * time.Second
@@ -30,7 +30,7 @@ const (
 type (
 	requestTokenRequest struct {
 		ConsumerKey string `json:"consumer_key"`
-		RedirectURI string `json:"redurect_uri"`
+		RedirectURI string `json:"redirect_uri"`
 	}
 
 	authorizeRequest struct {
@@ -106,12 +106,12 @@ func NewClient(consumerKey string) (*Client, error) {
 // GetRequestToken obtains the request token that is used
 // to authorize user in your application
 func (c *Client) GetRequestToken(ctx context.Context, redirectUrl string) (string, error) {
-	input := &requestTokenRequest{
+	inp := &requestTokenRequest{
 		ConsumerKey: c.consumerKey,
 		RedirectURI: redirectUrl,
 	}
 
-	values, err := c.doHTTP(ctx, endpointRequestToken, input)
+	values, err := c.doHTTP(ctx, endpointRequestToken, inp)
 	if err != nil {
 		return "", err
 	}
